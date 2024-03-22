@@ -17,6 +17,7 @@ Dalam proyek ini, kita akan mencoba membangun model prediktif untuk harga laptop
 Berdasarkan latar belakang masalah, rincian masalahnya adalah sebagai berikut:
 
 - Bagaimana kita dapat memprediksi harga laptop berdasarkan fitur-fitur tertentu?
+
 - Algoritma machine learning apa yang paling efektif untuk memprediksi harga laptop?
 
 ### Goals
@@ -24,6 +25,7 @@ Berdasarkan latar belakang masalah, rincian masalahnya adalah sebagai berikut:
 Untuk tujuan penyelesaiannya, antara lain:
 
 - Membuat model prediktif yang dapat memprediksi harga laptop dengan akurasi yang tinggi.
+
 - Menentukan algoritma machine learning terbaik untuk memprediksi harga laptop.
 
 ### Solution statments
@@ -34,15 +36,6 @@ Solusi yang dapat dilakukan :
 
 - Melakukan hyperparameter tuning dengan RandomizedSearchCV, RandomForestRegressor, KNeighborsRegressor, dan GradientBoostingRegressor untuk meningkatkan performa model.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut:
-
-  ### Solution statements
-
-  - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-  - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
-
 ## Data Understanding
 
 Data yang digunakan dalam proyek ini adalah dataset harga laptop yang mencakup berbagai fitur, seperti ukuran layar, RAM, penyimpanan, merek, dan lainnya. Dataset ini dapat diunduh dari [https://www.kaggle.com/datasets/juanmerinobermejo/laptops-price-dataset].
@@ -50,25 +43,37 @@ Data yang digunakan dalam proyek ini adalah dataset harga laptop yang mencakup b
 ### Variabel-variabel pada Laptop Price dataset adalah sebagai berikut:
 
 - RAM: Ukuran RAM laptop .
+
 - Storage: Kapasitas penyimpanan laptop .
+
 - Screen: Ukuran layar laptop.
+
 - Brand: Merek laptop.
+
 - Model: Model laptop.
+
 - CPU: Tipe prosesor laptop.
+
 - Storage type: Jenis penyimpanan laptop.
+
 - GPU: Jenis kartu grafis laptop (jika ada).
+
 - Touch: Menunjukkan apakah layar laptop mendukung fitur layar sentuh atau tidak.
 
 ### Exploratory Data Analysis and Visualization dataset
 
-![GitHub Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/correlation%20matrix.png)
-![GitHub Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/Screenshot%202024-03-22%20180026.png)
+![GitHub Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/correlation%20matrix.png?raw=true)
+
+![GitHub Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/Screenshot%202024-03-22%20180026.png?raw=true)
+
 Berdasarkan visualisasi diatas dapat diketahui bahwa:
 
 - RAM dan Storage memiliki korelasi untuk harga yang cukup penting
+
 - Kapasitas RAM paling banyak ada dibawah 20GB dan Storage dibawah 1000
 
-![Github Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/brand_laptop.png)
+![Github Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/brand_laptop.png?raw=true)
+
 Gambar diatas menunjukan bahwa brand memiliki kepercayaan sehingga memiliki pembelian product terbanyak.
 
 ## Data Preparation
@@ -81,7 +86,7 @@ Pada tahap ini, data dibersihkan dan diproses agar siap digunakan dalam pemodela
 
 - Sebelum memasukkan ke model, saya melakukan standarisasi dengan StandardScaler() pada kolom yang memiliki range value cukup luas.
 
-![Github Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/info_data.png)
+![Github Image](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/info_data.png?raw=true)
 Pada gambar info data sudah cukup bersih dan memiliki format numerik
 
 ## Modeling
@@ -89,7 +94,9 @@ Pada gambar info data sudah cukup bersih dan memiliki format numerik
 Pada tahap ini, tiga algoritma machine learning digunakan: K-Nearest Neighbors, Random Forest, dan AdaBoosting. Hyperparameter tuning dilakukan dengan RandomizedSearchCV, RandomForestRegressor, KNeighborsRegressor, dan GradientBoostingRegressor untuk meningkatkan performa model.
 
 - Membuat model dengan menggunakan algoritma K-Nearest Neighbors, alasan menggunakan algoritma ini karena ini merupakan algortima yang umum untuk menyelesaikan permasalahan regresi, kelebihan dari algoritma ini yaitu mudah dipahami dan cukup sederhana.
+
 - Membuat model dengan menggunakan algoritma RandomForest, kelebihan dari menggunakan algoritma ini yaitu terdiri dari beberapa model dan bekerja secara bersama-sama untuk menyelesaikan masalah.
+
 - Membuat model dengan algoritma AdaBoosting, dimana algoritma ini sangat powerfull dalam meningkatkan akurasi prediksi.
 
 ## Evaluation
@@ -98,10 +105,12 @@ Metrik evaluasi yang digunakan dalam proyek ini adalah Mean Squared Error (MSE).
 
 Hasil evaluasi akan ditampilkan setelah proses pemodelan dan evaluasi selesai dilakukan. Hasil ini akan memberikan gambaran tentang performa model dan efektivitas algoritma yang digunakan.
 
-![result](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/result1.png)
+![result](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/result1.png?raw=true)
+
 Terlihat pada gambar hasil dari ketiga algoritma yang dipakai ketika dihitung MSE model untuk training dan test dataset.
 
-![result test](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/result2.png)
+![result test](https://github.com/argalusmp/laptop_price_prediction_ML/blob/main/images/result2.png?raw=true)
+
 Hasil dari model ketika dicoba untuk memprediksi harga dari test dataset, dan menilai ketepatan dengan price aslinya.
 
 Boosting dan RandomForest memiliki akurasi yang cukup tinggi.
