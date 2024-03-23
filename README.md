@@ -89,35 +89,12 @@ Pada Gambar 5, menunjukkan bahwa laptop yang baru lebih banyak peminat daripada 
 
 Pada tahap ini, data dibersihkan dan diproses agar siap digunakan dalam pemodelan. Proses ini meliputi penanganan *missing values*, pengkodean variabel kategorikal, dan standarisasi beberapa kolom data numerik.
 
-- Melakukan penanganan *missing values* dengan mengisinya sesuai dengan format data, misal pada GPU yang memiliki cukup banyak missing values, karena produk memang tidak memiliki GPU, sehingga  mengisi nilai dengan teks '*None*'.  Berikut contoh kode program untuk menangani *missing values* pada kolom *GPU* :
+- Melakukan penanganan *missing values* dengan mengisinya sesuai dengan format data, misal pada GPU yang memiliki cukup banyak missing values, karena produk memang tidak memiliki GPU, sehingga  mengisi nilai dengan teks '*None*'. Hal ini menggunakan fungsi ```fillna()``` dari *pandas dataframe*
 
-    ```python
-    dataset['GPU'].fillna('None',inplace = True)
-	dataset.info()
-	```
+- Melakukan pengkodean dari kategorikal atau teks menjadi format numerik untuk model dengan *LabelEncoder()* pada setiap kolom yang ingin diubah menjadi berisi *value* numerik
 
-- Melakukan pengkodean dari kategorikal atau teks menjadi format numerik untuk model dengan *LabelEncoder()*. Berikut  kode program untuk mengubah format data kedalam numerik:
-```python
-from sklearn.preprocessing import LabelEncoder
 
-label_encoder = LabelEncoder()
-dataset['Laptop_Encoded'] = label_encoder.fit_transform(dataset['Laptop'])
-dataset['Status_Encoded'] = label_encoder.fit_transform(dataset['Status'])
-dataset['Brand_Encoded'] = label_encoder.fit_transform(dataset['Brand'])
-dataset['Model_Encoded'] = label_encoder.fit_transform(dataset['Model'])
-dataset['CPU_Encoded'] = label_encoder.fit_transform(dataset['CPU'])
-dataset['Storage type_Encoded'] = label_encoder.fit_transform(dataset['Storage type'])
-dataset['GPU_Encoded'] = label_encoder.fit_transform(dataset['GPU'])
-dataset['Touch_Encoded'] = label_encoder.fit_transform(dataset['Touch'])
-```
-
-- Sebelum memasukkan ke model,  melakukan standarisasi dengan *StandardScaler()* pada kolom yang memiliki range value cukup luas.
- ```python
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-X_train['Storage_scaled'] = scaler.fit_transform(X_train[['Storage']])
-X_train['Laptop_Encoded_scaled'] = scaler.fit_transform(X_train[['Laptop_Encoded']])
-```
+- Sebelum memasukkan ke model,  melakukan standarisasi dengan *StandardScaler()* pada kolom yang memiliki range value cukup luas, pada kasus ini pada kolom *Storage* dan *Laptop*.
 
 Setelah proses penyesuaian data maka akan didapatkan data dengan informasi seperti tabel dibawah ini:
 
@@ -140,10 +117,7 @@ Tabel 1. Clean Data
 Pada data tabel 1 diatas  info data sudah cukup bersih dan memiliki format numerik.
 
  Selanjutnya tahapan membagi dataset kedalam data *train* dan juga data *test*, menggunakan package dari sklearn dengan pembagian 90% *train* dan 10% *test*.
- ```python
- from sklearn.model_selection import train_test_split
- X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 123)
- ```
+
 
 
 ## Modeling
