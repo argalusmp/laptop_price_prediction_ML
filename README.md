@@ -1,5 +1,5 @@
 
-# Laporan Proyek Machine Learning - Vidi Septri Argalus Mp
+# Laptop Price Prediction
 
 ## Domain Proyek
 
